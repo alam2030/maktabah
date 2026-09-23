@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مكتبة عالم المستقبل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0067c3; --blue-dark:#00447e; --blue-tint:#eaf3fc;
+  --gold:#ffb602; --gold-dark:#e0a000;
+  --bg:#ffffff; --bg-soft:#f6f9fc; --card:#ffffff;
+  --ink:#17212e; --muted:#5c6773; --line:#e5eaf0;
+  color-scheme: light;
+}
+:root:not([data-theme="light"]){
+  @media (prefers-color-scheme: dark){
+    --blue:#4b96e0; --blue-dark:#1c4f86; --blue-tint:#152838;
+    --bg:#0f1a26; --bg-soft:#13202e; --card:#16232f;
+    --ink:#eef2f6; --muted:#9fadba; --line:#26333f;
+    --gold:#ffc233; --gold-dark:#e0a000;
+  }
+}
+:root[data-theme="dark"]{
+  --blue:#4b96e0; --blue-dark:#1c4f86; --blue-tint:#152838;
+  --bg:#0f1a26; --bg-soft:#13202e; --card:#16232f;
+  --ink:#eef2f6; --muted:#9fadba; --line:#26333f;
+  --gold:#ffc233; --gold-dark:#e0a000;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:'Tajawal',Tahoma,Arial,sans-serif; line-height:1.85;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:'Cairo',Tahoma,Arial,sans-serif; margin:0; color:var(--ink)}
+a{color:inherit}
+.wrap{max-width:1140px; margin:auto; padding:0 24px}
+
+header{position:sticky; top:env(safe-area-inset-top,0px); background:var(--bg); border-bottom:1px solid var(--line); z-index:5}
+.nav{height:76px; display:flex; align-items:center; justify-content:space-between; gap:18px}
+.brand{display:flex; align-items:center; gap:12px; text-decoration:none}
+.mark{width:46px; height:46px; border-radius:50%; border:2.5px solid var(--blue); display:grid; place-items:center; background:#fff; flex:none}
+.brand-name{font-family:'Cairo'; font-weight:800; font-size:17px; color:var(--ink)}
+.brand-name small{display:block; font-family:'Tajawal'; font-weight:400; font-size:12px; color:var(--muted)}
+.navlinks{display:flex; gap:28px; font-size:15px}
+.navlinks a{border-bottom:2px solid transparent; padding:4px 0}
+.navlinks a:hover{border-color:var(--gold)}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:10px; font-weight:700; font-size:14.5px; border:1.5px solid transparent; cursor:pointer}
+.btn.primary{background:var(--blue); color:#fff}
+.btn.primary:hover{background:var(--blue-dark)}
+.btn.ghost{border-color:var(--line); color:var(--ink)}
+.btn.ghost:hover{border-color:var(--blue)}
+
+.hero{padding:76px 0}
+.heroGrid{display:grid; grid-template-columns:1.1fr .9fr; gap:54px; align-items:center}
+.kicker{color:var(--blue); font-weight:700; font-size:15px}
+.hero h1{font-size:clamp(32px,4.4vw,50px); line-height:1.32; margin:14px 0 18px}
+.hero p{color:var(--muted); font-size:17px; max-width:48ch}
+.actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:30px}
+
+.emblem{position:relative; width:100%; max-width:360px; aspect-ratio:1; margin-inline:auto}
+.ring{position:absolute; inset:0; border-radius:50%; border:2px solid var(--line)}
+.ring.r2{inset:34px; border-color:var(--blue-tint); border-width:16px}
+.core{position:absolute; inset:56px; border-radius:50%; background:var(--blue); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; box-shadow:0 26px 50px rgba(0,103,195,.25)}
+.core svg{width:56px; height:56px}
+.core span{font-family:'Cairo'; font-weight:800; color:#fff; font-size:20px}
+.core small{color:var(--gold); font-size:12.5px; font-weight:700}
+
+section{padding:80px 0}
+.head{margin-bottom:40px; max-width:58ch}
+.head h2{font-size:29px}
+.head p{color:var(--muted); margin-top:8px}
+.bg-soft{background:var(--bg-soft)}
+
+.services{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:26px}
+.card .ic{width:46px; height:46px; border-radius:12px; background:var(--blue-tint); display:grid; place-items:center; margin-bottom:14px}
+.card h3{font-size:16.5px; margin-bottom:6px}
+.card p{color:var(--muted); font-size:14px; margin:0}
+
+.reasons{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.reason{padding:24px 0; border-top:3px solid var(--gold)}
+.reason h3{font-size:17px; margin-bottom:8px}
+.reason p{color:var(--muted); font-size:14.5px; margin:0}
+
+.contact{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+.box{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:30px}
+.box h3{font-size:17.5px; margin-bottom:16px}
+.info-row{display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--line); font-size:14.5px}
+.info-row:last-child{border-bottom:0}
+.info-row span:first-child{color:var(--muted)}
+
+footer{background:var(--blue-dark); color:#cfe0f2; padding:36px 0}
+.foot{display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap}
+.foot .brand-name{color:#fff}
+.foot .brand-name small{color:#a9c3dc}
+.foot small.copy{color:#9db8d1}
+
+.float{position:fixed; inset-inline-start:20px; bottom:calc(20px + env(safe-area-inset-bottom,0px)); background:#22c065; color:#fff; width:56px; height:56px; border-radius:50%; display:grid; place-items:center; box-shadow:0 12px 28px rgba(0,0,0,.25); z-index:9}
+
+@media(max-width:840px){
+  .navlinks{display:none}
+  .heroGrid{grid-template-columns:1fr}
+  .emblem{order:-1; max-width:260px}
+  .services{grid-template-columns:1fr 1fr}
+  .reasons{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .services{grid-template-columns:1fr}
+  .foot{flex-direction:column; align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">
+      <span class="mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 5c-2-1.4-4.6-2-7-2v13c2.4 0 5 .6 7 2 2-1.4 4.6-2 7-2V3c-2.4 0-5 .6-7 2z" stroke="#0067c3" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 5v13" stroke="#0067c3" stroke-width="1.8"/></svg>
+      </span>
+      <span class="brand-name">مكتبة عالم المستقبل<small>الحمدانية، جدة</small></span>
+    </a>
+    <nav class="navlinks">
+      <a href="#services">الخدمات</a>
+      <a href="#why">ليش نحن</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+    <a class="btn primary" href="https://wa.me/966590810052">راسلنا واتساب</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap heroGrid">
+    <div>
+      <div class="kicker">خدمات عامة وطباعة وتصميم</div>
+      <h1>شريكك اليومي في الطباعة والمعاملات</h1>
+      <p>من الطباعة والتصوير، إلى التصميم والبطاقات الذكية والخدمات الحكومية — كل شي تحتاجه من مكان وحد قريب منك في الحمدانية.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://wa.me/966590810052">اطلب عبر واتساب</a>
+        <a class="btn ghost" href="#services">شوف الخدمات</a>
+      </div>
+    </div>
+    <div class="emblem">
+      <div class="ring"></div>
+      <div class="ring r2"></div>
+      <div class="core">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 5c-2-1.4-4.6-2-7-2v13c2.4 0 5 .6 7 2 2-1.4 4.6-2 7-2V3c-2.4 0-5 .6-7 2z" stroke="#ffb602" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 5v13" stroke="#ffb602" stroke-width="1.6"/></svg>
+        <span>مكتبة</span>
+        <small>عالم المستقبل</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="bg-soft">
+  <div class="wrap">
+    <div class="head">
+      <h2>خدماتنا</h2>
+      <p>كل شي يخص الطباعة والمعاملات في مكان وحد.</p>
+    </div>
+    <div class="services">
+      <div class="card"><div class="ic">🖨️</div><h3>الطباعة والتصوير</h3><p>طباعة وتصوير المستندات بمقاسات ونسخ متعددة.</p></div>
+      <div class="card"><div class="ic">🎨</div><h3>التصميم</h3><p>تصاميم إعلانات، سندات قبض، بطاقات ونماذج بهوية خاصة فيك.</p></div>
+      <div class="card"><div class="ic">💻</div><h3>الخدمات الإلكترونية</h3><p>معاملاتك الحكومية والعامة عبر المنصات الرقمية.</p></div>
+      <div class="card"><div class="ic">📚</div><h3>التجليد والملفات</h3><p>تجليد الكتب والأبحاث وتجهيز المشاريع.</p></div>
+      <div class="card"><div class="ic">💳</div><h3>بطاقات PVC وNFC</h3><p>بطاقات تعريفية وذكية للاستخدام الشخصي أو التجاري.</p></div>
+      <div class="card"><div class="ic">✏️</div><h3>القرطاسية</h3><p>مستلزمات مدرسية ومكتبية لاحتياجات الطلاب اليومية.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="head">
+      <h2>ليش عالم المستقبل؟</h2>
+      <p>ثلاثة أشياء نحرص عليها في كل طلب.</p>
+    </div>
+    <div class="reasons">
+      <div class="reason"><h3>تنوع الخدمات</h3><p>عامة، مكتبية، وتصميمية تحت سقف وحد.</p></div>
+      <div class="reason"><h3>سرعة الإنجاز</h3><p>طلبك يتجهز بكفاءة من غير تأخير.</p></div>
+      <div class="reason"><h3>دقة التنفيذ</h3><p>اهتمام بالتفاصيل من أول تصميم لين آخر طبعة.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="bg-soft">
+  <div class="wrap">
+    <div class="head">
+      <h2>تواصل معنا</h2>
+      <p>يسعدنا خدمتك أونلاين أو في المكتبة.</p>
+    </div>
+    <div class="contact">
+      <div class="box">
+        <h3>بيانات التواصل</h3>
+        <div class="info-row"><span>الموقع</span><span>جدة – الحمدانية</span></div>
+        <div class="info-row"><span>الجوال</span><span><a href="tel:+966590810052">0590810052</a></span></div>
+        <div class="info-row"><span>واتساب</span><span><a href="https://wa.me/966590810052">تواصل مباشر</a></span></div>
+      </div>
+      <div class="box">
+        <h3>موقع المكتبة</h3>
+        <p style="color:var(--muted); font-size:14.5px; margin:0 0 18px">افتح الموقع مباشرة على خرائط Google ووصّل لنا بسهولة.</p>
+        <a class="btn primary" href="https://maps.app.goo.gl/CdnxgeDoMPDe1Ha18">فتح الموقع على الخريطة</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span class="brand-name">مكتبة عالم المستقبل<small>خدمات عامة وتصاميم — جدة</small></span>
+    <small class="copy">© 2026 جميع الحقوق محفوظة</small>
+  </div>
+</footer>
+
+<a class="float" href="https://wa.me/966590810052" aria-label="واتساب">
+  <svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.5 0-2.9-.4-4.1-1.1l-.3-.2-3.1.8.8-3-.2-.3C4.4 14.9 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+</a>
+
+</body>
+</html>
